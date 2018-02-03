@@ -2,6 +2,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -12,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import java.awt.Color;
 import javax.swing.UIManager;
+import javax.swing.JFormattedTextField;
 
 public class NewUser {
 
@@ -20,8 +23,7 @@ public class NewUser {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JPasswordField passwordField;
-	private JPasswordField passwordField1;
+	private JTextField textField_4;
 	
 	/**
 	 * Launch the application.
@@ -57,7 +59,7 @@ public class NewUser {
 		
 		JButton btnSignIn = new JButton("Sign In");
 		btnSignIn.setBackground(new Color(0, 0, 0));
-		btnSignIn.setForeground(new Color(34, 139, 34));
+		btnSignIn.setForeground(Color.BLUE);
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if(event.getActionCommand().equals("Sign In")) {
@@ -72,55 +74,47 @@ public class NewUser {
 		btnSignIn.setBounds(176, 617, 156, 35);
 		frame.getContentPane().add(btnSignIn);
 		
-		JLabel lblFirstName = new JLabel("First Name");
+		JLabel lblFirstName = new JLabel("Company Name");
 		lblFirstName.setForeground(new Color(255, 255, 255));
 		lblFirstName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFirstName.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
-		lblFirstName.setBounds(189, 76, 116, 35);
+		lblFirstName.setBounds(158, 76, 166, 35);
 		frame.getContentPane().add(lblFirstName);
 		
-		JLabel lblLastName = new JLabel("Last Name");
+		JLabel lblLastName = new JLabel("Company ID");
 		lblLastName.setForeground(new Color(255, 255, 255));
 		lblLastName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLastName.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
 		lblLastName.setBounds(189, 163, 116, 35);
 		frame.getContentPane().add(lblLastName);
 		
-		JLabel lblEmail = new JLabel("Email");
+		JLabel lblEmail = new JLabel("Employee Contact");
 		lblEmail.setForeground(new Color(255, 255, 255));
 		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEmail.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
-		lblEmail.setBounds(189, 252, 116, 35);
+		lblEmail.setBounds(158, 253, 181, 35);
 		frame.getContentPane().add(lblEmail);
 		
-		JLabel lblConfirmEmail = new JLabel("Confirm Email");
+		JLabel lblConfirmEmail = new JLabel("Employee Position");
 		lblConfirmEmail.setForeground(new Color(255, 255, 255));
 		lblConfirmEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConfirmEmail.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
 		lblConfirmEmail.setBounds(169, 339, 175, 35);
 		frame.getContentPane().add(lblConfirmEmail);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Employee Phone Number");
 		lblPassword.setForeground(new Color(255, 255, 255));
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPassword.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
-		lblPassword.setBounds(199, 430, 116, 35);
+		lblPassword.setBounds(126, 430, 244, 35);
 		frame.getContentPane().add(lblPassword);
 		
-		JLabel lblConfirmPassword = new JLabel("Confirm Password");
+		JLabel lblConfirmPassword = new JLabel("Package");
 		lblConfirmPassword.setForeground(new Color(255, 255, 255));
 		lblConfirmPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConfirmPassword.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
-		lblConfirmPassword.setBounds(169, 506, 175, 35);
+		lblConfirmPassword.setBounds(164, 510, 175, 35);
 		frame.getContentPane().add(lblConfirmPassword);
-		
-		JLabel lblCheck = new JLabel("Check");
-		lblCheck.setBounds(407, 386, 41, 28);
-		frame.getContentPane().add(lblCheck);
-		
-		JLabel label = new JLabel("Check");
-		label.setBounds(407, 550, 41, 28);
-		frame.getContentPane().add(label);
 		
 		textField = new JTextField();
 		textField.setForeground(new Color(0, 0, 0));
@@ -148,25 +142,13 @@ public class NewUser {
 		textField_3.setBounds(116, 382, 268, 35);
 		frame.getContentPane().add(textField_3);
 		
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		passwordField.setColumns(10);
-		passwordField.setBounds(116, 468, 268, 35);
-		frame.getContentPane().add(passwordField);
 		
-		passwordField1 = new JPasswordField();
-		passwordField1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		passwordField1.setColumns(10);
-		passwordField1.setBounds(116, 546, 268, 35);
-		frame.getContentPane().add(passwordField1);
-		
-		
-		JLabel lblNewUser = new JLabel("New User Sign Up");
+		JLabel lblNewUser = new JLabel("New Employee Sign Up");
 		lblNewUser.setBackground(new Color(255, 105, 180));
 		lblNewUser.setForeground(new Color(255, 99, 71));
 		lblNewUser.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewUser.setFont(new Font("HP Simplified", Font.BOLD, 40));
-		lblNewUser.setBounds(79, 13, 352, 50);
+		lblNewUser.setBounds(54, 13, 397, 50);
 		frame.getContentPane().add(lblNewUser);
 		
 		JSeparator separator = new JSeparator();
@@ -174,10 +156,26 @@ public class NewUser {
 		separator.setForeground(new Color(255, 99, 71));
 		separator.setBounds(54, 64, 397, 7);
 		frame.getContentPane().add(separator);
+		
+		textField_4 = new JTextField();
+		textField_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		textField_4.setColumns(10);
+		textField_4.setBounds(116, 467, 268, 35);
+		frame.getContentPane().add(textField_4);
+		
+		String[] packageStrings = { " ", "0-2000 Pictures", "2000-10000 Pictures", 
+				"10000-1000000 Pictures", "100000+ Pictures"};
+
+		//Create the combo box, select item at index 0.
+		JComboBox pacList = new JComboBox(packageStrings);
+		pacList.setFont(new Font("HP Simplified", Font.PLAIN, 20));
+		pacList.setBounds(116, 551, 268, 35);
+		pacList.setSelectedIndex(0);
+		frame.getContentPane().add(pacList);
+		
 	}
 	
 	public JFrame getFrame() {
 		return this.frame;
 	}
-
 }
