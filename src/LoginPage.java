@@ -22,7 +22,6 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 
 import java.awt.Color;
-import javax.swing.UIManager;
 
 public class LoginPage{
 
@@ -31,15 +30,13 @@ public class LoginPage{
 	private JLabel lblUsername;
 	private JLabel lblPassword;
 	private JLabel lblMotto;
+	private JSeparator separator; 
 	private JLabel lblNewLabel;
 	private JLabel label1;
 	private JButton btnCheckIn; 
 	private JLabel label;
 	private JButton btnNewUser;
 	private JPasswordField passwordField;
-	private JLabel lblNewLabel_1;
-	private JLabel lblOfYou;
-	private JLabel label_2;
 	/**
 	 * Launch the application.
 	 */
@@ -47,8 +44,11 @@ public class LoginPage{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginPage window = new LoginPage();
-					window.frame.setVisible(true);
+					DualScreenService dSS= new DualScreenService();
+					dSS.dual();
+					
+//					LoginPage window = new LoginPage();
+//					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,71 +69,72 @@ public class LoginPage{
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		label_2 = new JLabel();
-		label_2.setIcon(new ImageIcon("shade.jpg"));
-		ImageIcon myshade = new ImageIcon("letscruise.png");
-		Image imgshade = myshade.getImage();
-		Image newshadeImg = imgshade.getScaledInstance(177, 75, Image.SCALE_SMOOTH);
-		ImageIcon shadeimage = new ImageIcon(newshadeImg);
-		label_2.setBounds(177, 75, 234, 51);
-	
+	/*	
+		//background 
+		JLabel labelcruise = new JLabel();
+		labelcruise.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		frame.getContentPane().add(labelcruise);
+		ImageIcon mycruise = new ImageIcon("cruisetop.jpg");
+		Image imgcruise = mycruise.getImage();
+		Image newcruiseImg = imgcruise.getScaledInstance(labelcruise.getWidth(), labelcruise.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon cruiseimage = new ImageIcon(newcruiseImg);
+		JLabel btncruise = new JLabel(cruiseimage);
+		btncruise.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		frame.getContentPane().add(btncruise);
+		*/
 		
 		//username label and insert field
-		lblUsername = new JLabel("Username :");
-		lblUsername.setForeground(Color.YELLOW);
+		lblUsername = new JLabel("Username");
 		lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsername.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
-		lblUsername.setBounds(45, 330, 107, 20);
+		lblUsername.setBounds(200, 306, 100, 20);
 		frame.getContentPane().add(lblUsername);
 		
 		//password label and insert field
-		lblPassword = new JLabel("Password :");
-		lblPassword.setForeground(Color.YELLOW);
+		lblPassword = new JLabel("Password");
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPassword.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
-		lblPassword.setBounds(45, 426, 107, 20);
+		lblPassword.setBounds(200, 426, 100, 20);
 		frame.getContentPane().add(lblPassword);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		passwordField.setBounds(177, 420, 265, 34);
+		passwordField.setBounds(124, 459, 249, 34);
 		frame.getContentPane().add(passwordField);
 		
 		
 		//Logo
 		label1 = new JLabel();
-		label1.setBounds(75, 40, 353, 112);
+		label1.setBounds(124, 40, 244, 159);
 		frame.getContentPane().add(label1);
 		ImageIcon mylogo = new ImageIcon("letscruise.png");
 		Image imglogo = mylogo.getImage();
 		Image newlogoImg = imglogo.getScaledInstance(label1.getWidth(), label1.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon logoimage = new ImageIcon(newlogoImg);
 		JLabel btnlogo = new JLabel(logoimage);
-		btnlogo.setBounds(75, 40, 353, 112);
+		btnlogo.setBounds(124, 40, 244, 159);
 		frame.getContentPane().add(btnlogo);
-		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setEnabled(false);
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		btnNewButton.setBounds(163, 82, 265, 70);
-		frame.getContentPane().add(btnNewButton);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		textField.setBounds(177, 324, 265, 34);
+		textField.setBounds(124, 339, 249, 34);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		/******************************************************/
-		
 		//motto w/ the underline under you
-		lblMotto = new JLabel("We Value");
-		lblMotto.setForeground(Color.YELLOW);
-		lblMotto.setFont(new Font("HP Simplified Light", Font.BOLD, 35));
+		lblMotto = new JLabel("The value of YOU");
+		lblMotto.setFont(new Font("HP Simplified Light", Font.BOLD, 20));
 		lblMotto.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMotto.setBounds(12, 185, 175, 29);
+		lblMotto.setBounds(124, 230, 244, 29);
 		frame.getContentPane().add(lblMotto);
+		
+		//Underline
+		separator = new JSeparator();
+		separator.setForeground(new Color(255, 0, 0));
+		separator.setBackground(new Color(255, 0, 0));
+		separator.setBounds(285, 258, 40, 2);
+		frame.getContentPane().add(separator);
 		/******************************************************/
 		
 		
@@ -148,7 +149,7 @@ public class LoginPage{
 		ImageIcon imagePlane = new ImageIcon(newPlaneImg);
 		
 		btnCheckIn = new JButton("   Sign in",imagePlane);
-		btnCheckIn.setForeground(Color.BLUE);
+		btnCheckIn.setForeground(new Color(34, 139, 34));
 		btnCheckIn.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnCheckIn.setFont(new Font("HP Simplified", Font.BOLD, 20));
 		btnCheckIn.setBounds(60, 562, 152, 44);
@@ -159,20 +160,20 @@ public class LoginPage{
 		label = new JLabel();
 		label.setBounds(296, 567, 35, 35);
 		frame.getContentPane().add(label);
-		ImageIcon myImg = new ImageIcon("newuser.png");
+		ImageIcon myImg = new ImageIcon("newuser.jpg");
 		Image img = myImg.getImage();
 		Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon image = new ImageIcon(newImg);
 		
 		btnNewUser = new JButton("   New User", image);
-		btnNewUser.setForeground(new Color(0, 128, 0));
+		btnNewUser.setForeground(new Color(184, 134, 11));
 		btnNewUser.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent event) {
 				if(event.getActionCommand().equals("   New User")) {
 					NewUser userFrame = new NewUser();
 					userFrame.getFrame().setVisible(true);
-					frame.setVisible(false);
+//					frame.setVisible(false);
 				}
 				
 			}
@@ -183,33 +184,10 @@ public class LoginPage{
 		btnNewUser.setBounds(273, 562, 169, 44);
 		frame.getContentPane().add(btnNewUser);
 		
-		lblOfYou = new JLabel("YOU");
-		lblOfYou.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOfYou.setForeground(Color.YELLOW);
-		lblOfYou.setFont(new Font("HP Simplified Light", Font.BOLD, 35));
-		lblOfYou.setBounds(314, 185, 78, 29);
-		frame.getContentPane().add(lblOfYou);
-		
-		JLabel label_1 = new JLabel();
-		label_1.setIcon(new ImageIcon("cruisetop.jpg"));
-		label_1.setBounds(0, 0, 8, 2);
-		frame.getContentPane().add(label_1);
-		
-			
-		//background image
-		ImageIcon mycruise = new ImageIcon("cruisetop.jpg");
-		Image imgcruise = mycruise.getImage();
-		Image newcruiseImg = imgcruise.getScaledInstance(494, 
-				780, Image.SCALE_SMOOTH);
-		ImageIcon cruiseimage = new ImageIcon(newcruiseImg);
-		JLabel labelcruise1 = new JLabel(cruiseimage);
-		labelcruise1.setBounds(0, 0, 494, 665);
-		frame.getContentPane().add(labelcruise1);
-		
-		
 	}
 	
 	public JFrame getFrame() {
 		return this.frame;
 	}
+
 }
