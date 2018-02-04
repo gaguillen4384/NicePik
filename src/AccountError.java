@@ -18,6 +18,11 @@ import java.awt.event.ActionEvent;
 public class AccountError {
 
 	private JFrame frame;
+	
+	public JFrame getFrame() {
+		return this.frame;
+	}
+	
 
 	/**
 	 * Launch the application.
