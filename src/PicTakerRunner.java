@@ -23,7 +23,9 @@ public class PicTakerRunner implements Runnable {
 	CanvasFrame canvas = new CanvasFrame("'Take Pik!' PoS");
 	static IplImage img;
 	private CamraReady rdy;
-	boolean didPikTake = true;
+	boolean didPikTake = false;
+	int pllleeeaassee = 4;
+	static boolean matchFlag;
 
 	public PicTakerRunner(CamraReady ready) {
 		rdy = ready;
@@ -35,49 +37,55 @@ public class PicTakerRunner implements Runnable {
 		FrameGrabber grabber = new VideoInputFrameGrabber(0); // 1 for next camera
 		OpenCVFrameConverter.ToIplImage converter = new OpenCVFrameConverter.ToIplImage();
 		TimeChecker gp = new TimeChecker(rdy);
-		
-		
+
 		try {
 			grabber.start();
-			while (didPikTake) {
+			while (!didPikTake) {
 				Frame frame = grabber.grab();
 
 				img = converter.convert(frame);
 
-				
 				synchronized (rdy) {
 					canvas.showImage(converter.convert(img));
 					rdy.setMsg(true);
 					rdy.notifyAll();
-				
-				if (interval == 1) {
-					System.out.println("in if");
-					String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-			        PicTaker.uploadFileName = timeStamp + ".jpg";
-					PicTaker.uploadFilePath = PicTaker.uploadFileDir + "\\" +PicTaker.uploadFileName;
-					cvSaveImage(PicTaker.uploadFilePath, img);
-					ToastMessage message3 = new ToastMessage("Nice Pik!", 750);
-					message3.setVisible(true);
-					try {
-						BufferedReader br = new BufferedReader(new FileReader(PicTaker.uploadFilePath));
-						if (br.readLine() == null) {
-							System.out.println("No errors, and file empty");
+
+					if (interval == 1) {
+						System.out.println("in if");
+						String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+						PicTaker.uploadFileName = timeStamp + ".jpg";
+						PicTaker.uploadFilePath = PicTaker.uploadFileDir + "\\" + PicTaker.uploadFileName;
+						cvSaveImage(PicTaker.uploadFilePath, img);
+						System.out.println(PicTaker.uploadFileName);
+						System.out.println(PicTaker.uploadFilePath);
+						ToastMessage message3 = new ToastMessage("Nice Pik!", 750);
+						message3.setVisible(true);
+						File file = new File(PicTaker.uploadFileDir);
+						
+						if (file.listFiles().length > 0) {
+							System.out.println("File Found");
+							FindFace obj = new FindFace();
+							matchFlag = obj.searchMatchingFaces(PicTaker.uploadFilePath);
 							didPikTake = true;
 						} else {
-							System.out.println("File is crated and we break here");
+							System.out.println("File not Found");
 							didPikTake = false;
 						}
-					} catch (NullPointerException e) {
-						System.out.println("Null upload file path");
-					} catch (FileNotFoundException e) {
-						System.out.println("File not Found");
 					}
 				}
-				}
+			}
+			if (matchFlag == true) {
+				Thankyou thank = new Thankyou();
+				thank.getFrame().setVisible(true);
+			} else if (matchFlag == false) {
+				AccountError error = new AccountError();
+				error.getFrame().setVisible(true);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		// If yes, change to thank you and checkout
 
 	}
 
