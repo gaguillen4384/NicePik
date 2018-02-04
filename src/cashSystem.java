@@ -52,7 +52,7 @@ public class cashSystem extends javax.swing.JFrame {
 	int qty9 = 0;
 	int qty10 = 0;
 	int qty11 = 0;
-	public double paidAmount;
+	public static double paidAmount = 0;
 
 	/**
 	 * Creates new form cashSystem
@@ -362,13 +362,13 @@ public class cashSystem extends javax.swing.JFrame {
 		
 		GraphicsDevice[] gs = ge.getScreenDevices();
 		
-		GraphicsDevice gd = gs[1];
+		GraphicsDevice gd = gs[0];
 		GraphicsConfiguration[] gc = gd.getConfigurations();
-		Rectangle gcBounds = gc[1].getBounds();
+		Rectangle gcBounds = gc[0].getBounds();
 		int xoffs = gcBounds.x;
 		int yoffs = gcBounds.y;
 		
-		this.setLocation((1 * 350) + xoffs, (1 * 200) + yoffs);
+		this.setLocation(( 350) + xoffs, ( 200) + yoffs);
 		
 		
 
@@ -3993,19 +3993,27 @@ public class cashSystem extends javax.swing.JFrame {
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
 		// TODO add your handling code here:
-		//String amount = amountPaidField.getText();
-		//paidAmount = Double.parseDouble(amount);
+		if(amountPaidField.getText().length()>0) {
+			String amount = amountPaidField.getText();
+			paidAmount = Double.parseDouble(amount);
+		}else {
+			paidAmount = 0;
+		}
 		//
 		//if (paidAmount < total) {
 		//	noteLabel.setText("Note: Paid amount can't be less than TOTAL PAYABLE!!!");
 		//} else {
-		//	changeLabel.setText(String.valueOf(paidAmount - total));
-		//	noteLabel.setText("");
+			//try {
+			//	changeLabel.setText(String.valueOf(paidAmount - total));
+			//	noteLabel.setText("");
+			//}catch(Exception e) {
+			//	System.out.println("fuck");
+			//}
 			PicTaker pic = new PicTaker();
-			pic.method();
-			
-		//}
-	}// GEN-LAST:event_jButton1ActionPerformed
+			pic.pictureTaker();
+		}
+	
+	// GEN-LAST:event_jButton1ActionPerformed
 
 	private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jCheckBox1ActionPerformed
 		// TODO add your handling code here:
