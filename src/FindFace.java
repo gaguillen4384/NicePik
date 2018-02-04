@@ -43,7 +43,7 @@ public class FindFace {
 	public static void main(String[] args) throws Exception {
 		
 		try {
-			credentials = new ProfileCredentialsProvider("default").getCredentials();
+			credentials = new ProfileCredentialsProvider("credential.txt").getCredentials();
 		} catch (Exception e) {
 			throw new AmazonClientException(
 					"Cannot load the credentials from the credential profiles file. " +
@@ -189,7 +189,7 @@ public class FindFace {
 			System.out.println();
 		}
 		
-		if(faceImageMatches != null){
+		if(!faceImageMatches.isEmpty()){
 			return true;
 		}else{
 			return false;
