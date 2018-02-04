@@ -52,6 +52,7 @@ public class cashSystem extends javax.swing.JFrame {
 	int qty9 = 0;
 	int qty10 = 0;
 	int qty11 = 0;
+	public double paidAmount;
 
 	/**
 	 * Creates new form cashSystem
@@ -355,6 +356,8 @@ public class cashSystem extends javax.swing.JFrame {
 		jLabel47 = new javax.swing.JLabel();
 		totalDrinksLabel = new javax.swing.JLabel();
 		
+		
+		// For the customer you just need to make the [0]
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		
 		GraphicsDevice[] gs = ge.getScreenDevices();
@@ -365,7 +368,7 @@ public class cashSystem extends javax.swing.JFrame {
 		int xoffs = gcBounds.x;
 		int yoffs = gcBounds.y;
 		
-		this.setLocation((1 * 450) + xoffs, (1 * 460) + yoffs);
+		this.setLocation((1 * 350) + xoffs, (1 * 200) + yoffs);
 		
 		
 
@@ -3990,14 +3993,18 @@ public class cashSystem extends javax.swing.JFrame {
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
 		// TODO add your handling code here:
-		String amount = amountPaidField.getText();
-		double paidAmount = Double.parseDouble(amount);
-		if (paidAmount < total) {
-			noteLabel.setText("Note: Paid amount can't be less than TOTAL PAYABLE!!!");
-		} else {
-			changeLabel.setText(String.valueOf(paidAmount - total));
-			noteLabel.setText("");
-		}
+		//String amount = amountPaidField.getText();
+		//paidAmount = Double.parseDouble(amount);
+		//
+		//if (paidAmount < total) {
+		//	noteLabel.setText("Note: Paid amount can't be less than TOTAL PAYABLE!!!");
+		//} else {
+		//	changeLabel.setText(String.valueOf(paidAmount - total));
+		//	noteLabel.setText("");
+			PicTaker pic = new PicTaker();
+			pic.method();
+			
+		//}
 	}// GEN-LAST:event_jButton1ActionPerformed
 
 	private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -4261,7 +4268,7 @@ public class cashSystem extends javax.swing.JFrame {
 	 * @param args
 	 *            the command line arguments
 	 */
-//	public static void main(String args[]) {
+	public static void main(String args[]) {
 //		/* Set the Nimbus look and feel */
 //		// <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
 //		// (optional) ">
@@ -4293,12 +4300,12 @@ public class cashSystem extends javax.swing.JFrame {
 ////		// </editor-fold>
 //
 //		/* Create and display the form */
-////		java.awt.EventQueue.invokeLater(new Runnable() {
-////			public void run() {
-////				 new cashSystem().setVisible(true);
-////			}
-////		});
-//	}
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				 
+			}
+		});
+	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JTextField amountPaidField;
