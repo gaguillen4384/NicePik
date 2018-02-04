@@ -58,7 +58,7 @@ public class NewUser {
 
 		
 		JButton btnSignIn = new JButton("Sign In");
-		btnSignIn.setBackground(new Color(0, 0, 0));
+		btnSignIn.setBackground(UIManager.getColor("Button.background"));
 		btnSignIn.setForeground(Color.BLUE);
 		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
