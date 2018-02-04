@@ -16,7 +16,8 @@ import java.awt.Color;
 public class Thankyou {
 
 	private JFrame frame;
-	String total = "10.0";
+	String actualTotal = Double.toString(cashSystem.paidAmount);
+	String total = actualTotal;
 
 	/**
 	 * Launch the application.
@@ -32,6 +33,10 @@ public class Thankyou {
 				}
 			}
 		});
+	}
+	
+	public JFrame getFrame(){
+		return this.frame;
 	}
 
 	/**
@@ -63,7 +68,7 @@ public class Thankyou {
 		
 		//Labels
 		
-		JLabel txtTotal = new JLabel("$10.0");
+		JLabel txtTotal = new JLabel("$"+Double.toString(cashSystem.paidAmount));
 		txtTotal.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		txtTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTotal.setBounds(168, 313, 155, 92);
