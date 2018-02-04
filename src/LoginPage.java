@@ -109,7 +109,8 @@ public class LoginPage{
 		frame.getContentPane().add(label1);
 		ImageIcon mylogo = new ImageIcon("letscruise.png");
 		Image imglogo = mylogo.getImage();
-		Image newlogoImg = imglogo.getScaledInstance(label1.getWidth(), label1.getHeight(), Image.SCALE_SMOOTH);
+		Image newlogoImg = imglogo.getScaledInstance(label1.getWidth(), 
+				label1.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon logoimage = new ImageIcon(newlogoImg);
 		JLabel btnlogo = new JLabel(logoimage);
 		btnlogo.setBounds(124, 40, 244, 159);
@@ -145,7 +146,8 @@ public class LoginPage{
 		frame.getContentPane().add(lblNewLabel);
 		ImageIcon myPlane = new ImageIcon("paperplane.png");
 		Image imgPlane = myPlane.getImage();
-		Image newPlaneImg = imgPlane.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
+		Image newPlaneImg = imgPlane.getScaledInstance(lblNewLabel.getWidth(), 
+				lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
 		ImageIcon imagePlane = new ImageIcon(newPlaneImg);
 		
 		btnCheckIn = new JButton("   Sign in",imagePlane);
